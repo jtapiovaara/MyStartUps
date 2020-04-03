@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Etuisuudet</title>
+</head>
+{#here we present the use of 'snippets'. We have an html-file outside django structure passing value.#}
+{#this is way to use 'any' html -file as a part of your app.  Just pass "value" as here.#}
+<body>
+<a href="{% url 'hanke'%}" class="btn btn-outline-info btn-sm">Kotiin</a>
+<div class="container-fluid">
+    {% load static %}
+    {% for item in object_list %}
+        <img class="img-fluid" src="{% static 'images/' %}{{ item.kuva }}" data-toggle="tooltip" title='{{ item.arvo }} €'>
+    {% endfor %}
+    <hr>
+    {% for item in object_list %}
+        {% include 'my_snippet.html' with value=item %}<br>
+    {% endfor %}
+    <hr>
+    {% for item in new_context_entry %}
+        {{ item.nimi }} |
+    {% endfor %}
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</html>
