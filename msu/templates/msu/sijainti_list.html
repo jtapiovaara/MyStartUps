@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<a href="{% url 'hanke'%}" class="btn btn-outline-info btn-sm">Kotiin</a>
+<hr>
+{% load static %}
+<div class="container">
+    <h1>"Taustalla tapahtuu" -esimerkki </h1>
+    <h2>Alla olevalta listalta voi valita Yhdysvaltalaisten postinumeroiden perusteella haettuja NASAn Lantsat 8 satelliitin ottamia kuvia. </h2>
+    <h5>Sovellukseen voidaan lisätä uusia postiosoitteita Django Adminin kautta (myöh. Vue.js).
+        Pelkän postinumeron perusteella haetaan kohteen tarvittavat tiedot longituudi, latituudi, paikan nimi sekä osavaltio.
+        Nämä tiedot tallennetaan taustalla suoraan relaatiokantaan (tässä SQLite).
+        Valintalista täytetään helposti tunnistettavilla tiedoilla "Key West, FL" ja valitsemalla näytetään viimeisin(!) sateliittikuva alueelta.
+    </h5>
+    <hr>
+    <div class="dropdown dropright">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Sateliittikuvia Yhdysvaltain alueelta
+        </button>
+        <div class="dropdown-menu">
+          {% for object in object_list %}
+{#              <a class="dropdown-item" href="{% url 'sijainti_id' object.id %}">{{ object.paikka }}, {{ object.posti_numero }}</a>#}
+              <a class="dropdown-item" href="https://api.nasa.gov/planetary/earth/imagery?lon={{ object.lon }}&lat={{ object.lat }}&dim=0.15&api_key=2mf5Hr9BRyOAuyihObGC5BY7wWu3YHyWSSHlzKuC">{{ object.paikka }}, {{ object.osavaltio }}</a>
+          {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</html>

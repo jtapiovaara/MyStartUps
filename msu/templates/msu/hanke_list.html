@@ -19,6 +19,11 @@
                       <a class="navbar-brand" href="{% url 'etu' %}">Etuus</a>
                   </li>
 	          </ul>
+              <ul class="navbar-nav">
+                  <li class="nav-item active">
+                      <a class="navbar-brand" href="{% url 'pie-chart' %}">Etuudet käppyrä</a>
+                  </li>
+	          </ul>
             <ul class="navbar-nav">
                   <li class="nav-item active">
                       <a class="navbar-brand" href="{% url 'saksanautot'%}">Saksan automyyntiluvut</a>
@@ -31,9 +36,19 @@
 	          </ul>
             <ul class="navbar-nav">
                   <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'cov19' %}"> Cov 19</a>
+                      <a class="navbar-brand" href="{% url 'sijainti' %}">Landsat 8</a>
                   </li>
-	          </ul>
+            </ul>
+            <ul class="navbar-nav">
+                  <li class="nav-item active">
+                      <a class="navbar-brand" href="{% url 'cov19' %}"> Karu Korona</a>
+                  </li>
+            </ul>
+            <ul class="navbar-nav">
+                  <li class="nav-item active">
+                      <a class="navbar-brand" href="{% url 'mun-view' %}"> Ei Templatea</a>
+                  </li>
+            </ul>
         </div>
 	</nav>
 <body>
@@ -43,12 +58,26 @@ Seuraavassa
 {% endfor %}
 <hr>
 <div class="container">
-    {% for job in view.hankkeet %}
-        <div class="col-7">
-            {{ job.nimi }} | {{ job.miksi }}
+    <div class="row">
+        <div class="col-4">
+        {% for job in view.hankkeet %}
+                {{ job.nimi }} | {{ job.miksi }}
+            <hr>
+        {% endfor %}
         </div>
-        <hr>
-    {% endfor %}
+        <div class="col-4">
+        {% for job in view.ajat %}
+                {{ job.nimi }} | {{ job.miksi }}
+            <hr>
+        {% endfor %}
+        </div>
+        <div class="col-4">
+        {% for job in view.arvot %}
+                {{ job.nimi }} | {{ job.miksi }}
+            <hr>
+        {% endfor %}
+        </div>
+    </div>
 </div>
 
 </body>

@@ -16,6 +16,7 @@
 <div class="container-fluid">
     {% load static %}
     {% for item in object_list %}
+        {{ item.nimi }}
         <img class="img-fluid" src="{% static 'images/' %}{{ item.kuva }}" data-toggle="tooltip" title='{{ item.arvo }} €'>
     {% endfor %}
     <hr>
