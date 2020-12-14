@@ -9,6 +9,9 @@
 </head>
 <body>
 <a href="{% url 'hanke'%}" class="btn btn-outline-info btn-sm">Kotiin</a>
+<a class="btn btn-outline-success btn-sm" href="https://api.nasa.gov/planetary/earth/imagery?lon=24.7820874&lat=60.1809746&dim=0.15&date=2020-09-09&api_key={{ view.nasakey }}" target="_blank">From Above You</a>
+<a class="btn btn-outline-success btn-sm" href="https://api.nasa.gov/planetary/earth/imagery?lon=4.502382&lat=50.859148&dim=0.15&date=2020-06-01&api_key={{ view.nasakey }}" target="_blank">From Above Arto</a>
+<a class="btn btn-outline-success btn-sm" href="https://api.nasa.gov/planetary/earth/imagery?lon=24.500972767&lat=67.556537062&dim=0.15&date=2020-06-15&api_key={{ view.nasakey }}" target="_blank">Neitokainen</a>
 <hr>
 {% load static %}
 <div class="container">
@@ -19,17 +22,19 @@
         Nämä tiedot tallennetaan taustalla suoraan relaatiokantaan (tässä SQLite).
         Valintalista täytetään helposti tunnistettavilla tiedoilla "Key West, FL" ja valitsemalla näytetään viimeisin(!) sateliittikuva alueelta.
     </h5>
+    {#<a class="dropdown-item" href="https://api.nasa.gov/planetary/earth/imagery?lon={{ object.lon }}&lat={{ object.lat }}&dim=0.15&api_key={{ view.nasakey }}" target="_blank">#}
     <hr>
     <div class="dropdown dropright">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            Sateliittikuvia Yhdysvaltain alueelta
-        </button>
-        <div class="dropdown-menu">
-          {% for object in object_list %}
-{#              <a class="dropdown-item" href="{% url 'sijainti_id' object.id %}">{{ object.paikka }}, {{ object.posti_numero }}</a>#}
-              <a class="dropdown-item" href="https://api.nasa.gov/planetary/earth/imagery?lon={{ object.lon }}&lat={{ object.lat }}&dim=0.15&api_key=2mf5Hr9BRyOAuyihObGC5BY7wWu3YHyWSSHlzKuC">{{ object.paikka }}, {{ object.osavaltio }}</a>
-          {% endfor %}
-        </div>
+            Sateliittikuvia Yhdysvaltain alueelta</button>
+            <div class="dropdown-menu">
+              {% for object in object_list %}
+                  <a class="dropdown-item" href="https://api.nasa.gov/planetary/earth/imagery?lon={{ object.lon }}
+{#                  &lat={{ object.lat }}&dim=0.2&api_key={{ view.nasakey }}" target="_blank">#}
+                  &lat={{ object.lat }}&dim=0.2&date=2020-11-12&api_key={{ view.nasakey }}" target="_blank">
+                      {{ object.paikka }}, {{ object.osavaltio }}</a>
+              {% endfor %}
+            </div>
     </div>
 </div>
 </body>

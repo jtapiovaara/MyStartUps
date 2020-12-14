@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trellosta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+{% load static %}
+<a href="{% url 'hanke'%}" class="btn btn-outline-info btn-sm">Kotiin</a>
+<div class="container">
+{#        {{ my_board.name }}#}
+    <p>Here cards about my StartUp Projects as they are put in Trello.</p>
+
+{#    <a href="{% url 'uusitrellolista' %}">Luo uusi lista</a>#}
+{#    <a href="{% url 'uusitrello' %}">Luo uusi kortti</a>#}
+    <div class="card-columns">
+        {% for taulu in my_startup_list.list_cards %}
+            <div class="card card-body shadow">
+                {{ taulu }}
+                <small><a href="{{ taulu.shortUrl }}" target="_blank">Avaa Trellossa</a></small>
+                <hr>
+                {{ taulu.desc}}
+                <hr>
+                <small>Last update: {{ taulu.dateLastActivity }}</small>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

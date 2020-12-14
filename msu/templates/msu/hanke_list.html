@@ -8,72 +8,99 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
   	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container-fluid">
             <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'yhteys' %}">Yhteyshenkilö</a>
-                  </li>
-	          </ul>
-              <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'etu' %}">Etuus</a>
-                  </li>
-	          </ul>
-              <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'pie-chart' %}">Etuudet käppyrä</a>
-                  </li>
-	          </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        My StartUp's Details
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'yhteys' %}">Yhteyshenkilö</a>
+                        <a class="dropdown-item" href="{% url 'etu' %}">Etuus</a>
+                        <a class="dropdown-item" href="{% url 'pie-chart' %}">Etuudet käppyrä</a>
+                        <a class="dropdown-item" href="{% url 'trelloapi' %}">MSU Trellossa</a>
+                    </div>
+                </li></ul>
             <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'saksanautot'%}">Saksan automyyntiluvut</a>
-                  </li>
-	          </ul>
-              <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'porssi' %}">Pörssi</a>
-                  </li>
-	          </ul>
-            <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'sijainti' %}">Landsat 8</a>
-                  </li>
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'saksanautot'%}"> | Saksan automyyntiluvut</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'cov19' %}"> Karu Korona</a>
-                  </li>
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'porssi' %}">Pörssi</a>
+                </li>
+	        </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'sijainti' %}">Landsat 8</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="navbar-brand" href="{% url 'mun-view' %}"> Ei Templatea</a>
-                  </li>
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'cov19' %}"> Karu Korona</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'spacex' %}"> SpaceX!</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'glowit' %}"> Hehkutetaan</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'mun-view' %}"> Ei Templatea</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{% url 'tiger' %}"> Golf Player Stats</a>
+                </li>
             </ul>
         </div>
 	</nav>
 <body>
-Seuraavassa
+<div class="sidebar-right bottom">
+    <button class="btn btn-outline-default" type="button" id="menu1" data-toggle="dropdown">Hankkeista tarkemmin
+    </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            {% for hanke in hanke_list%}
+                <li>
+                    <a class="btn btn-default" href="{% url 'detail' hanke.id %}">{{ hanke.nimi }}</a>
+                </li>
+            {% endfor %}
+      </ul>
+</div>
+<div class="container">
+Seuraavassa start-up -investointini kokonaisarvoltaan {{ summa.arvo__sum }} € esitettynä monella tapaa:
+    <br>
 {% for hanke in object_list %}
-    {{ hanke.nimi }} |
+    <small style="color: chocolate">'{{ hanke.nimi }}' </small>
 {% endfor %}
 <hr>
-<div class="container">
     <div class="row">
         <div class="col-4">
-        {% for job in view.hankkeet %}
+            <b>Käänteinen aakkosjärjestys, mistä kyse:</b> <br>
+        {% for job in hankkeet %}
                 {{ job.nimi }} | {{ job.miksi }}
             <hr>
         {% endfor %}
         </div>
         <div class="col-4">
-        {% for job in view.ajat %}
-                {{ job.nimi }} | {{ job.miksi }}
+        <b>Aikajärjestys ja oma tavoite:</b> <br>
+        {% for job in ajat %}
+                {{ job.nimi }} | {{ job.tavoite }}
             <hr>
         {% endfor %}
         </div>
         <div class="col-4">
-        {% for job in view.arvot %}
-                {{ job.nimi }} | {{ job.miksi }}
+        <b>Hankintajärjestys, arvonmuodostus:</b> <br>
+        {% for job in arvot %}
+                {{ job.nimi }} | {{ job.tyyppi }}
             <hr>
         {% endfor %}
         </div>

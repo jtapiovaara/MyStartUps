@@ -9,6 +9,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <title>Etuisuudet</title>
 </head>
+<style>
+        table, th, td {
+        border: 2px solid gray;
+        padding: 15px;
+    }
+</style>
 {#here we present the use of 'snippets'. We have an html-file outside django structure passing value.#}
 {#this is way to use 'any' html -file as a part of your app.  Just pass "value" as here.#}
 <body>
@@ -16,17 +22,33 @@
 <div class="container-fluid">
     {% load static %}
     {% for item in object_list %}
-        {{ item.nimi }}
-        <img class="img-fluid" src="{% static 'images/' %}{{ item.kuva }}" data-toggle="tooltip" title='{{ item.arvo }} €'>
+        <img class="img-fluid" src="{% static 'images/' %}{{ item.kuva }}" style="height: 100px">
     {% endfor %}
     <hr>
-    {% for item in object_list %}
+Tässä listattuna kuten itse arvostan hanketta ('Rank' -order):<br>
+    {% for item in view.rankki %}
         {% include 'my_snippet.html' with value=item %}<br>
     {% endfor %}
     <hr>
-    {% for item in new_context_entry %}
-        {{ item.nimi }} |
-    {% endfor %}
+<div class="row">
+    <table>
+        <tr>
+{#            {% for item in new_context_entry %} tämä olisi haku jos 'context'#}
+            {% for item in view.new_context_entry %}
+                <th>
+                    {{ item.nimi }}
+                </th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in object_list %}
+                <td>
+                    {{ item.nimi }}<br>{{ item.arvo }} €
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

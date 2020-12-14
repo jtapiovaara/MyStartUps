@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ context.this_flight.mission_name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+{% load static %}
+{% load humanize %}
+<style>
+    body {
+        {#background-image: url({% static "images/spacex_landing_3.jpg"%});#}
+        background-image: url('{{ context.this_flight.links.flickr_images.0 }}');
+        background-size: cover;
+    }
+    .col {
+        background: rgba(255, 255, 250, 0.7) /* Green background with 70% opacity */
+        {#background-color: cornsilk;#}
+        {#opacity: 0.5;#}
+    }
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-4">
+            <img src="{{ context.this_flight.links.mission_patch_small }}" style="width: 300px">
+{#            {% if context.this_flight.flight_number == 97 %}#}
+{#                <img src="{% static "images/spacex_flight_97_patch.png"%}" style="width: 300px">#}
+{#            {% elif context.this_flight.flight_number == 101 %}#}
+{#                <img src="{% static "images/spacex_flight_101_patch.jpg"%}" style="width: 300px">#}
+{#            {% else %}#}
+{#                <img src="{{ context.this_flight.links.mission_patch_small }}" style="width: 300px">#}
+{#            {% endif %}#}
+            <h3>{{ context.this_flight.mission_name }} - {{ context.this_flight.flight_number | ordinal}} Spacex mission</h3>
+            <small>Launch date: {{ context.launch_date }}</small>
+            <hr>
+            <b>Rocket:</b> {{ context.this_flight.rocket.rocket_name }}
+            <b>Engine:</b> {{ context.this_flight.rocket.rocket_type }}<br>
+            <b>Flight details:</b>
+            <a href="{{ context.this_flight.links.video_link}}" target="_blank">{{ context.this_flight.mission_name }} on Youtube.</a>
+            {{ context.this_flight.details}}
+            {{ context.this_flight.launch_failure_details.reason }}<br>
+            <b>Lauch site:</b>
+            {{ context.this_flight.launch_site.site_name_long }}<br>
+
+        </div>
+        <div class="col col-sm-4 offset-4 md-1">
+            <b>Payload's main Customer:</b>
+            {{ context.this_flight.rocket.second_stage.payloads.0.customers.0 }}<br>
+            <b>Payload (kg):</b>
+            {{ context.this_flight.rocket.second_stage.payloads.0.payload_mass_kg }}<br>
+            <b>First stage usage:</b> {{ context.this_flight.rocket.first_stage.cores.0.flight | ordinal}} time
+            <hr>
+            <img src="{{ context.this_flight.links.flickr_images.0 }}" style="width: 300px">
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

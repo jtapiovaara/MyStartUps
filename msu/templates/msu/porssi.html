@@ -207,11 +207,12 @@
 {% load static %}
 <a href="{% url 'hanke'%}" class="btn btn-outline-info btn-sm">Kotiin</a>
 <div class="container">
-    <h2>Osakeomistus Helsingin pörssissä.  Määrät ja osinko-odotus.</h2>
+    <h2>Osakeomistus Helsingin pörssissä</h2>
     <div class="row">
         <table>
             <tr>
                 <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/ILK2S" target="_blank"> Ilkka 2 </a></th>
+                <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/KESKOB" target="_blank"> Kesko B </a></th>
                 <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/OKDBV" target="_blank"> Oriola B </a></th>
                 <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/ORNBV" target="_blank"> Orion B </a></th>
                 <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/STERV" target="_blank"> Stora Enso B </a></th>
@@ -221,30 +222,43 @@
                 <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/YIT" target="_blank"> YIT </a></th>
             </tr>
             <tr>
-                <td><h2>100 kpl</h2></td>
-                <td><h2>250 kpl</h2></td>
-                <td><h2>62 kpl</h2></td>
-                <td><h2>235 kpl</h2></td>
-                <td><h2>686 kpl</h2></td>
-                <td><h2>60 kpl</h2></td>
-                <td><h2>680 kpl</h2></td>
-                <td><h2>200 kpl</h2></td>
+                <td><h2>300</h2></td>
+                <td><h2>400</h2></td>
+                <td><h2>250</h2></td>
+                <td><h2>62</h2></td>
+                <td><h2>235</h2></td>
+                <td><h2>686</h2></td>
+                <td><h2>60</h2></td>
+                <td><h2>1000</h2></td>
+                <td><h2>200</h2></td>
             </tr>
             <tr>
-                <td><h2>20 €</h2></td>
-                <td><h2>23 €</h2></td>
-                <td><h2>93 €</h2></td>
-                <td><h2>118 €</h2></td>
-                <td><h2>871 €</h2></td>
-                <td><h2>78 €</h2></td>
-                <td><h2>326 €</h2></td>
-                <td><h2>56 €</h2></td>
+                <th><a href="#"> Cash A </a></th>
+                <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/KESKOB" target="_blank"> Kesko B </a></th>
+                <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/KNEBV" target="_blank"> Kone </a></th>
+                <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/TYRES" target="_blank"> Nokian Renkaat </a></th>
+                <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/ORNBV" target="_blank"> Orion B </a></th>
+                <th><a href="https://www.kauppalehti.fi/porssi/porssikurssit/osake/UPM" target="_blank"> UPM Kymmene </a></th>
+                <th><a href="#"> Cash B </a></th>
+                <th><a href="#"> Cash C </a></th>
+                <th><a href="#"> Cash D </a></th>
+            </tr>
+            <tr>
+                <td><h2>0</h2></td>
+                <td><h2>400</h2></td>
+                <td><h2>100</h2></td>
+                <td><h2>200</h2></td>
+                <td><h2>150</h2></td>
+                <td><h2>200</h2></td>
+                <td><h2>0</h2></td>
+                <td><h2>0</h2></td>
+                <td><h2>0</h2></td>
             </tr>
             <tr>
                 <td><span class="emoji monkey" role="img" aria-label="monkey"></span>
-                    <audio controls>
-                        <source src ="{% static "images/deltahouse.mp3" %}" type="audio/mpeg">
-                    </audio>
+{#                    <audio controls>#}
+{#                        <source src ="{% static "images/deltahouse.mp3" %}" type="audio/mpeg">#}
+{#                    </audio>#}
                 </td>
                 <td><span class="emoji clock" role="img" aria-label="clock"></span></td>
                 <td><span class="emoji camera" role="img" aria-label="camera flash"></span></td>
@@ -257,10 +271,13 @@
         </table>
     </div>
 </div>
+<hr>
+
 {#    <span class="emoji mailbox" role="img" aria-label="mailbox"></span>#}
 {#    <span class="emoji moon" role="img" aria-label="moon phases"></span>#}
 {#    <span class="emoji wave" role="img" aria-label="hand wave"></span>#}
 {#    <span class="emoji inbox" role="img" aria-label="inbox tray"></span>#}
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

@@ -2,28 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kontaktit</title>
-      <meta charset="utf-8">
+    <title>MSU</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-<a href="{% url 'hanke'%}" class="btn btn-outline-info btn-sm">Kotiin</a>
+{% load static %}
+<div class="container">
+<h2>{{ hanke }}</h2>
+<p>{{ hanke.tavoite }}</p>
+<p>{{ hanke.tyyppi }}</p>
+<p>{{ hanke.aika }}</p>
+<p>{{ hanke.miksi }}</p>
 
-<div>
-    {% for item in yhteydet %}
-        <ul>
-        {{ item.sukunimi }}
-        </ul>
-    {% endfor %}
-<hr>
-    {% for item in varalla %}
-        <ul>
-        {{ item.tyyppi }}
-        {{ item.miksi }}
-        {{ item.tavoite }}
-        </ul>
-    {% endfor %}
+    <img src="{% static "images/"%}{{ hanke.etu_set.first.kuva }}" style="block-size: 500px"><br>
+    <img src="{% static "images/"%}Rauhoitettu_kohde_Fingerpori.jpg" class="img-responsive" alt="Logos und legos">
+
+
+
+
 </div>
 
 </body>
